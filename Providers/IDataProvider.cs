@@ -16,6 +16,20 @@ namespace Sermon.Providers
     /// </summary>
     public interface IDataProvider
     {
-        DataSet ReadData();
+        event EventHandler<DataAvailableEventArgs> DataAvailable;
+    }
+
+    public class DataAvailableEventArgs : EventArgs
+    {
+        public DataAvailableEventArgs(DataSet data)
+        {
+            Data = data;
+        }
+
+        public DataSet Data
+        {
+            get;
+            private set;
+        }
     }
 }

@@ -18,6 +18,12 @@ namespace Sermon.Providers
     {
         public DateTime Timestamp;
         public List<DataPoint> DataPoints;
+
+        public DataSet()
+        {
+            Timestamp = DateTime.Now;
+            DataPoints = new List<DataPoint>();
+        }
     }
 
     public class DataPoint

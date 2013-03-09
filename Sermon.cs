@@ -6,12 +6,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Sermon.Providers;
 
 namespace Sermon
 {
     public partial class Sermon : Form
     {
         private string currentComPort = "COM?";
+        private IDataProvider provider = null;
 
         public Sermon()
         {
@@ -41,6 +43,21 @@ namespace Sermon
         {
             tsddComPort.Text = e.ClickedItem.Text;
             currentComPort = e.ClickedItem.Text;
+
+            // get rid of old provider
+            if (provider != null)
+            {
+            }
+
+            // create provider
+//            provider = new ComPortProvider(e.ClickedItem.Text);
+            provider = new DummyProvider();
+            provider.DataAvailable += new System.EventHandler<DataAvailableEventArgs>(this.DataAvailable);
+        }
+
+        private void DataAvailable(object sender, DataAvailableEventArgs e)
+        {
+            tsslStatus.Text = "Got data " + e.Data.Timestamp;
         }
     }
 }

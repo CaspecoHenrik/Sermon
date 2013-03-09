@@ -17,16 +17,12 @@ namespace Sermon.Providers
     public class ComPortProvider : IDataProvider 
     {
         private System.IO.Ports.SerialPort port;
+        public event EventHandler<DataAvailableEventArgs> DataAvailable;
 
         public ComPortProvider(string portName)
         {
             port = new System.IO.Ports.SerialPort(portName, 9600);
             port.Open(); 
-        }
-
-        DataSet IDataProvider.ReadData()
-        {
-            return null;
         }
     }
 }

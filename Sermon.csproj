@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Providers\ComPortProvider.cs" />
     <Compile Include="Providers\DataSet.cs" />
+    <Compile Include="Providers\DummyProvider.cs" />
     <Compile Include="Providers\IDataProvider.cs" />
     <Compile Include="Sermon.cs">
       <SubType>Form</SubType>
